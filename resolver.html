@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dWeb Resolver (Babel Standalone)</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <h1>dWeb Browser (In-Browser Transpile via Babel)</h1>
+
+  <input id="domainInput" placeholder="Enter .dweb domain" />
+  <button id="resolveBtn">Visit</button>
+  <p id="status"></p>
+  <div id="miniBrowser"></div>
+
+  <!-- 1) Core libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+
+  <!-- 2) Babel Standalone with TS+React presets -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    // Register presets
+    Babel.registerPreset('ts', { presets: ['typescript'] });
+    Babel.registerPreset('react', { presets: ['react'] });
+  </script>
+
+  <!-- 3) Your main logic -->
+  <script type="module" src="./resolver.js"></script>
+</body>
+</html>
